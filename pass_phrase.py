@@ -77,7 +77,11 @@ def validate_options(options, args):
                 sys.stderr.write("Could not open the specified {0} word file.\n".format(word_type))
                 sys.exit(1)
         else:
-            common_word_file_locations = ["{0}.txt", "~/.pass-phrase/{0}.txt"]
+            common_word_file_locations = [
+                "{0}.txt",
+                "~/.pass-phrase/{0}.txt",
+                os.path.path.join(os.path.dirname(__file__), "{0}.txt"),
+            ]
 
             for loc in common_word_file_locations:
                 wordfile = loc.format(word_type)
